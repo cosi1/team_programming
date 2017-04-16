@@ -1,0 +1,12 @@
+# Introduction
+
+So you've joined a team of developers, awaiting your first programming project. Your colleague asked you to "check tickets in Jira", "clone the repo", and "review her PR". In a burst of panic, your mind wanders to the safe, cozy lab you've just left. Would it be possible to come back...?
+
+Transitioning to professional software development may be an overwhelming, daunting experience. This short book is intended for readers (not necessarily scientists!) who have some previous programming experience, but have never worked in a development team, especially in a commercial setting. It covers basic, essential topics that you will most likely encounter during your work as a software developer.
+
+Although this book is aimed at a wide audience of programmers, regardless of the programming language they use, I decided to ground it in practice, providing examples and case studies in R and command-line Git.
+
+Why R? While it's becoming one of the most popular languages in scientific programming, oftentimes it's not considered a full-fledged language. R programmers (or "users") usually lack software engineering skills, coding regime and knowledge of good programming practices, which results in poorly-written, low quality code.
+
+![CC-BY-SA](https://i.creativecommons.org/l/by-sa/4.0/88x31.png) This book is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
+

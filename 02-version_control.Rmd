@@ -1,0 +1,117 @@
+# Version control systems: git
+
+Imagine a team of architects working on a large construction design. It's Thursday and Alice wants to work from home on Friday. She makes blueprints of the part she's working on, makes some changes at home, and brings the blueprints to the office on Monday. Now she only needs to apply the changes she's made to the main document, and the result is no different than as if she did the whole work at the office. Meanwhile, her colleagues can work on the other parts of the design, not bothered by Alice taking the whole documentation of out the office.
+
+The above scenario is common in software development -- thanks to so called *version control systems* (VCS). Version control allows collaborators to:
+
+* share and easily synchronize the project within the team,
+* keep track of changes made to the documents,
+* work simultaneously on the same project and peer-review changes.
+
+While the most popular version control system used in academia seems to be SVN (Subversion), professional software developers tend to prefer Git. Written by Linus Thorvalds (the author of Linux kernel), Git is more complex than SVN, but -- arguably -- gives the developer much more freedom and flexibility, with more sophisticated branching mechanism (which will be discussed in more detail further) and distributed repository architecture.
+
+Git is a free, open-source tool available for all popular platforms. To use it on your computer, you need to install it from your OS's software repository (e.g., using `apt-get` on Ubuntu) or download it from [the project website](https://git-scm.com/).
+
+Although Git is a distributed system, your team needs a place where the master copy of the repository is stored (like Alice's office in our example.) Your company probably keeps in-house repositories on their own machine(s), but you may want to use an external hosting service for your (professional or hobby) project. Notable git hosting services include [Github](https://github.com), Atlassian's [Bitbucket](https://bitbucket.org), and [GitLab](https://gitlab.com). The latter provides an open-source Community Edition, which can be installed on your own server and serve as a free, private hosting service.
+
+## Cloning a repository
+
+Each repository has its own URL, which can be shared with the collaborators. It looks like a typical Internet address, prefixed with either `https://` (or `http://`), or `ssh://`. Cloning a repository makes a local copy on your computer -- this copy itself is a complete repository, with a complete history and all branches. To clone a repository, open the command line / terminal, enter the directory where you want to keep it, and type:
+
+    git clone <address_of_the_repository>
+
+The repository will be cloned into a subdirectory in the current path. Now you can view it, make changes to its files and create local branches, even offline, without being connected to your company's machine.
+
+To keep your copy up-to-date, open its directory (or any subdirectory), and type:
+
+    git pull
+
+This will pull changes from the *origin* (the remote copy of the repository) and update your working copy.
+
+**Tip\:** Try to make a habit of updating your repository every time you start your work.
+
+## Committing changes
+
+Git keeps track of all changes made to the repository (except ignored files -- they are listed in `.gitignore` file in the project's directory.) When you modify a file, delete it or create a new file (or directory), it appears as a modification; you can check a list of modified files, typing:
+
+    git status
+
+To view a list of changes you have made, you can view the *diff*. Diffs are the magic behind version control systems, since the VCS "knows" exactly what changes you have made, and only synchronizes these changes -- so that the size of the repository is much smaller, and, what's even more important, the risk of conflicts is drastically reduced. Type:
+
+    git diff
+
+A detailed list of changes -- line by line -- is displayed. On most terminals changes are colored green (added content) and red (removed content.)
+
+If you want to commit changes made to a file (i.e., save them to your local repository), first add the file to the commit list (or *stage it*):
+
+    git add <filename.ext>
+
+You can add multiple files at once, separating them by spaces, or even add all modified files:
+
+    git add -A
+
+To commit the changes, type:
+
+    git commit
+
+A text editor is opened (set as default for *text mode*; don't be surprised if Vim or Nano is launched.[^1]) You can type a short comment describing changes you have made. Try to be as concise and informative as possible; don't include file names in the comment (these will be visible in the change log anyway), but rather try to describe *what exactly* has been done, e.g.: "Fixed a negative value bug", or "Improved input file handling."
+
+Your commits are automatically added to the repository change log. To view the log, type:
+
+    git log
+
+When you feel that your changes can be *pushed* to the master repository, type:
+
+    git push
+
+This will push the changes to the *master branch* of the repository. Usually, when working in a team, pushing to the main branch carries a significant risk of corrupting the code. Instead, you would use branches.
+
+[^1]: Lifesaver for Vi/Vim: `:w` saves changes, `:q` quits the editor.
+
+## Working on branches
+
+In our example, Alice made blueprints of the documentation and took them home. An equivalent in version control would be *branching*. Like in a tree, a branch emerges from the trunk (*master branch*) or another branch -- it's then called a *sub-branch*. You can view a list of the branches in your repository, typing:
+
+    git branch
+
+When you create a branch, it contains en exact copy of the "mother" branch. By default, current branch is used to create your "blueprint":
+
+    git checkout -b new_branch
+
+If you want to create a branch from another branch, you must specify its name explicitly:
+
+    git checkout -b new_branch some_existing_branch
+
+You can make modifications, browse changes, and commit to your new branch just like to any other branch. You can even switch between branches -- and the "snapshot" of each branch will immediately appear in your working directory. To switch to a different branch, though, your work on the current branch must be either committed or *stashed*. To stash changes, type:
+
+    git stash
+
+Git will save the state of your current branch (both staged and unstaged files.) You can now move to another branch, work on it, and restore the stashed changes when you're back to the previous branch:
+
+    git stash apply
+
+You can even paste the stashed changes to another branch!
+
+When pushing your branch to the remote repository for the first time, you must tell Git that your local branch mirrors remote branch with the same name:
+
+    git push -u origin new_branch
+
+When your work is ready to be synchronized with the main branch (like Alice did when she came to the office), you can review your changes once again, switch to the branch you want to merge your changes to (typically `master`), and merge them:
+
+    git checkout master
+    git pull
+    git merge new_branch
+    git push
+
+Now, the magic comes in: as you remember, Git keeps track only of the changes you have made, so it can painlessly merge your changes even if someone else has worked on the same project. Unless you both have made changes to the same file, that is.
+
+In our example, imagine that Alice comes to the office only to notice that Bob worked on the same part of the design. Now the changes they have made can't be simply "put together". This is called (unsurprisingly) a *conlict*. When Git detects a conflict, it doesn't allow you to merge your changes. Instead, it creates a "superposition" of the conflicting files, with both changes made on your branch and the branch you want to merge to, separated by "fences" (`<<<<<<<`, `=======` and `>>>>>>>`.) You need to manually resolve the conflict, removing obsolete changes (remember to remove the fences as well!), commit your work once again, and push the commit to the remote repository:
+
+    git status
+    git commit
+    git push
+
+## Pull requests
+
+When working with hosting services like Github, you will be using one more important feature: *pull requests*. You make a pull request when you want to synchronize your work with the main branch -- this tells your peers that you have finished your work and they can review your changes before you merge them. I will discuss the whole process further.
+
