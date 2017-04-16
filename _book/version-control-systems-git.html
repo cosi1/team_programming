@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Team Programming for Scientists</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="A short introduction to software engineering for scientists">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Team Programming for Scientists" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A short introduction to software engineering for scientists" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Team Programming for Scientists" />
+  
+  <meta name="twitter:description" content="A short introduction to software engineering for scientists" />
+  
+
+<meta name="author" content="Paweł Piątkowski">
+
+
+<meta name="date" content="2017-04-16">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="introduction.html">
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="version-control-systems-git.html"><a href="version-control-systems-git.html"><i class="fa fa-check"></i><b>2</b> Version control systems: git</a><ul>
+<li class="chapter" data-level="2.1" data-path="version-control-systems-git.html"><a href="version-control-systems-git.html#cloning-a-repository"><i class="fa fa-check"></i><b>2.1</b> Cloning a repository</a></li>
+<li class="chapter" data-level="2.2" data-path="version-control-systems-git.html"><a href="version-control-systems-git.html#committing-changes"><i class="fa fa-check"></i><b>2.2</b> Committing changes</a></li>
+<li class="chapter" data-level="2.3" data-path="version-control-systems-git.html"><a href="version-control-systems-git.html#working-on-branches"><i class="fa fa-check"></i><b>2.3</b> Working on branches</a></li>
+<li class="chapter" data-level="2.4" data-path="version-control-systems-git.html"><a href="version-control-systems-git.html#pull-requests"><i class="fa fa-check"></i><b>2.4</b> Pull requests</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Team Programming for Scientists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="version-control-systems-git" class="section level1">
+<h1><span class="header-section-number">2</span> Version control systems: git</h1>
+<p>Imagine a team of architects working on a large construction design. It’s Thursday and Alice wants to work from home on Friday. She makes blueprints of the part she’s working on, makes some changes at home, and brings the blueprints to the office on Monday. Now she only needs to apply the changes she’s made to the main document, and the result is no different than as if she did the whole work at the office. Meanwhile, her colleagues can work on the other parts of the design, not bothered by Alice taking the whole documentation of out the office.</p>
+<p>The above scenario is common in software development – thanks to so called <em>version control systems</em> (VCS). Version control allows collaborators to:</p>
+<ul>
+<li>share and easily synchronize the project within the team,</li>
+<li>keep track of changes made to the documents,</li>
+<li>work simultaneously on the same project and peer-review changes.</li>
+</ul>
+<p>While the most popular version control system used in academia seems to be SVN (Subversion), professional software developers tend to prefer Git. Written by Linus Thorvalds (the author of Linux kernel), Git is more complex than SVN, but – arguably – gives the developer much more freedom and flexibility, with more sophisticated branching mechanism (which will be discussed in more detail further) and distributed repository architecture.</p>
+<p>Git is a free, open-source tool available for all popular platforms. To use it on your computer, you need to install it from your OS’s software repository (e.g., using <code>apt-get</code> on Ubuntu) or download it from <a href="https://git-scm.com/">the project website</a>.</p>
+<p>Although Git is a distributed system, your team needs a place where the master copy of the repository is stored (like Alice’s office in our example.) Your company probably keeps in-house repositories on their own machine(s), but you may want to use an external hosting service for your (professional or hobby) project. Notable git hosting services include <a href="https://github.com">Github</a>, Atlassian’s <a href="https://bitbucket.org">Bitbucket</a>, and <a href="https://gitlab.com">GitLab</a>. The latter provides an open-source Community Edition, which can be installed on your own server and serve as a free, private hosting service.</p>
+<div id="cloning-a-repository" class="section level2">
+<h2><span class="header-section-number">2.1</span> Cloning a repository</h2>
+<p>Each repository has its own URL, which can be shared with the collaborators. It looks like a typical Internet address, prefixed with either <code>https://</code> (or <code>http://</code>), or <code>ssh://</code>. Cloning a repository makes a local copy on your computer – this copy itself is a complete repository, with a complete history and all branches. To clone a repository, open the command line / terminal, enter the directory where you want to keep it, and type:</p>
+<pre><code>git clone &lt;address_of_the_repository&gt;</code></pre>
+<p>The repository will be cloned into a subdirectory in the current path. Now you can view it, make changes to its files and create local branches, even offline, without being connected to your company’s machine.</p>
+<p>To keep your copy up-to-date, open its directory (or any subdirectory), and type:</p>
+<pre><code>git pull</code></pre>
+<p>This will pull changes from the <em>origin</em> (the remote copy of the repository) and update your working copy.</p>
+<p><strong>Tip:</strong> Try to make a habit of updating your repository every time you start your work.</p>
+</div>
+<div id="committing-changes" class="section level2">
+<h2><span class="header-section-number">2.2</span> Committing changes</h2>
+<p>Git keeps track of all changes made to the repository (except ignored files – they are listed in <code>.gitignore</code> file in the project’s directory.) When you modify a file, delete it or create a new file (or directory), it appears as a modification; you can check a list of modified files, typing:</p>
+<pre><code>git status</code></pre>
+<p>To view a list of changes you have made, you can view the <em>diff</em>. Diffs are the magic behind version control systems, since the VCS “knows” exactly what changes you have made, and only synchronizes these changes – so that the size of the repository is much smaller, and, what’s even more important, the risk of conflicts is drastically reduced. Type:</p>
+<pre><code>git diff</code></pre>
+<p>A detailed list of changes – line by line – is displayed. On most terminals changes are colored green (added content) and red (removed content.)</p>
+<p>If you want to commit changes made to a file (i.e., save them to your local repository), first add the file to the commit list (or <em>stage it</em>):</p>
+<pre><code>git add &lt;filename.ext&gt;</code></pre>
+<p>You can add multiple files at once, separating them by spaces, or even add all modified files:</p>
+<pre><code>git add -A</code></pre>
+<p>To commit the changes, type:</p>
+<pre><code>git commit</code></pre>
+<p>A text editor is opened (set as default for <em>text mode</em>; don’t be surprised if Vim or Nano is launched.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>) You can type a short comment describing changes you have made. Try to be as concise and informative as possible; don’t include file names in the comment (these will be visible in the change log anyway), but rather try to describe <em>what exactly</em> has been done, e.g.: “Fixed a negative value bug”, or “Improved input file handling.”</p>
+<p>Your commits are automatically added to the repository change log. To view the log, type:</p>
+<pre><code>git log</code></pre>
+<p>When you feel that your changes can be <em>pushed</em> to the master repository, type:</p>
+<pre><code>git push</code></pre>
+<p>This will push the changes to the <em>master branch</em> of the repository. Usually, when working in a team, pushing to the main branch carries a significant risk of corrupting the code. Instead, you would use branches.</p>
+</div>
+<div id="working-on-branches" class="section level2">
+<h2><span class="header-section-number">2.3</span> Working on branches</h2>
+<p>In our example, Alice made blueprints of the documentation and took them home. An equivalent in version control would be <em>branching</em>. Like in a tree, a branch emerges from the trunk (<em>master branch</em>) or another branch – it’s then called a <em>sub-branch</em>. You can view a list of the branches in your repository, typing:</p>
+<pre><code>git branch</code></pre>
+<p>When you create a branch, it contains en exact copy of the “mother” branch. By default, current branch is used to create your “blueprint”:</p>
+<pre><code>git checkout -b new_branch</code></pre>
+<p>If you want to create a branch from another branch, you must specify its name explicitly:</p>
+<pre><code>git checkout -b new_branch some_existing_branch</code></pre>
+<p>You can make modifications, browse changes, and commit to your new branch just like to any other branch. You can even switch between branches – and the “snapshot” of each branch will immediately appear in your working directory. To switch to a different branch, though, your work on the current branch must be either committed or <em>stashed</em>. To stash changes, type:</p>
+<pre><code>git stash</code></pre>
+<p>Git will save the state of your current branch (both staged and unstaged files.) You can now move to another branch, work on it, and restore the stashed changes when you’re back to the previous branch:</p>
+<pre><code>git stash apply</code></pre>
+<p>You can even paste the stashed changes to another branch!</p>
+<p>When pushing your branch to the remote repository for the first time, you must tell Git that your local branch mirrors remote branch with the same name:</p>
+<pre><code>git push -u origin new_branch</code></pre>
+<p>When your work is ready to be synchronized with the main branch (like Alice did when she came to the office), you can review your changes once again, switch to the branch you want to merge your changes to (typically <code>master</code>), and merge them:</p>
+<pre><code>git checkout master
+git pull
+git merge new_branch
+git push</code></pre>
+<p>Now, the magic comes in: as you remember, Git keeps track only of the changes you have made, so it can painlessly merge your changes even if someone else has worked on the same project. Unless you both have made changes to the same file, that is.</p>
+<p>In our example, imagine that Alice comes to the office only to notice that Bob worked on the same part of the design. Now the changes they have made can’t be simply “put together”. This is called (unsurprisingly) a <em>conlict</em>. When Git detects a conflict, it doesn’t allow you to merge your changes. Instead, it creates a “superposition” of the conflicting files, with both changes made on your branch and the branch you want to merge to, separated by “fences” (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code> and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>.) You need to manually resolve the conflict, removing obsolete changes (remember to remove the fences as well!), commit your work once again, and push the commit to the remote repository:</p>
+<pre><code>git status
+git commit
+git push</code></pre>
+</div>
+<div id="pull-requests" class="section level2">
+<h2><span class="header-section-number">2.4</span> Pull requests</h2>
+<p>When working with hosting services like Github, you will be using one more important feature: <em>pull requests</em>. You make a pull request when you want to synchronize your work with the main branch – this tells your peers that you have finished your work and they can review your changes before you merge them. I will discuss the whole process further.</p>
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Lifesaver for Vi/Vim: <code>:w</code> saves changes, <code>:q</code> quits the editor.<a href="version-control-systems-git.html#fnref1">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
