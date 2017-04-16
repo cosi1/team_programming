@@ -8,3 +8,7 @@ documentclass: book
 description: "A short introduction to software engineering for scientists"
 ---
 
+# Preface {-}
+
+![CC-BY-SA](https://i.creativecommons.org/l/by-sa/4.0/88x31.png) This book is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
+

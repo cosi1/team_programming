@@ -8,5 +8,3 @@ Although this book is aimed at a wide audience of programmers, regardless of the
 
 Why R? While it's becoming one of the most popular languages in scientific programming, oftentimes it's not considered a full-fledged language. R programmers (or "users") usually lack software engineering skills, coding regime and knowledge of good programming practices, which results in poorly-written, low quality code.
 
-![CC-BY-SA](https://i.creativecommons.org/l/by-sa/4.0/88x31.png) This book is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
-
