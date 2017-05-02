@@ -1,0 +1,13 @@
+# Unit tests
+
+Unit tests are like seat belts: they seem to be only complicating your life -- until an accident happens.
+
+Imagine you're writing a function that takes an input and returns some result. Unless your function performs trivial calculations, like a single mathematical operation, you need to check somehow if it's well written. Typically, you would execute your function with several sets of input parameters and verify if the output is correct. Now imagine that you have dozens of functions in your project, some of them very sophisticated, and you decide to optimize the workflow. Or completely change the architecture of your program. What would you do? What comes to mind, is: try to automate it, writing a script that would execute your functions with a predefined set of input parameters each time it's launched.
+
+Now add automatic output validation and you get unit tests.
+
+In a team setting, unit tests are important for one more reason: they can tell your peers or future developers *what* exactly you expect your function to do. Sometimes documentation is not enough when your function deals with complicated input.
+
+Unit testing routines are available for most programming languages -- usually as separate libraries. Basic procedure almost always looks roughly the same: a single *test case* consists of the execution of one function and the expected output.
+
+**Test conditions.** 

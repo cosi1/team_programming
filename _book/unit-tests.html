@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="version-control-systems-git.html">
+<link rel="prev" href="version-control-systems-git.html">
+
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -89,21 +89,30 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction" class="section level1">
-<h1><span class="header-section-number">1</span> Introduction</h1>
-<p>So you’ve joined a team of developers, awaiting your first programming project. Your colleague asked you to “check tickets in Jira”, “clone the repo”, and “review her PR”. In a burst of panic, your mind wanders to the safe, cozy lab you’ve just left. Would it be possible to come back…?</p>
-<p>Transitioning to professional software development may be an overwhelming, daunting experience. This short book is intended for readers (not necessarily scientists!) who have some previous programming experience, but have never worked in a development team, especially in a commercial setting. It covers basic, essential topics that you will most likely encounter during your work as a software developer.</p>
-<p>Although this book is aimed at a wide audience of programmers, regardless of the programming language they use, I decided to ground it in practice, providing examples and case studies in R and command-line Git.</p>
-<p>Why R? While it’s becoming one of the most popular languages in scientific programming, oftentimes it’s not considered a full-fledged language. R programmers (or “users”) usually lack software engineering skills, coding regime and knowledge of good programming practices, which results in poorly-written, low quality code.</p>
+<div id="unit-tests" class="section level1">
+<h1><span class="header-section-number">3</span> Unit tests</h1>
+<p>Unit tests are like seat belts: they seem to be only complicating your life – until an accident happens.</p>
+<p>Imagine you’re writing a function that takes an input and returns some result. Unless your function performs trivial calculations, like a single mathematical operation, you need to check somehow if it’s well written. Typically, you would execute your function with several sets of input parameters and verify if the output is correct. Now imagine that you have dozens of functions in your project, some of them very sophisticated, and you decide to optimize the workflow. Or completely change the architecture of your program. What would you do? What comes to mind, is: try to automate it, writing a script that would execute your functions with a predefined set of input parameters each time it’s launched.</p>
+<p>Now add automatic output validation and you get unit tests.</p>
+<p>In a team setting, unit tests are important for one more reason: they can tell your peers or future developers <em>what</em> exactly you expect your function to do. Sometimes documentation is not enough when your function deals with complicated input.</p>
+<p>Unit testing routines are available for most programming languages – usually as separate libraries. Basic procedure almost always looks roughly the same: a single <em>test case</em> consists of the execution of one function and the expected output.</p>
+<p><strong>Test conditions.</strong></p>
+
 
 </div>
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="version-control-systems-git.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="version-control-systems-git.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
