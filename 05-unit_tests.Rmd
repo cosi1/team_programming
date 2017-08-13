@@ -10,4 +10,57 @@ In a team setting, unit tests are important for one more reason: they can tell y
 
 Unit testing routines are available for most programming languages -- usually as separate libraries. Basic procedure almost always looks roughly the same: a single *test case* consists of the execution of one function and the expected output.
 
-**Test conditions.** 
+## An ideal unit test
+
+Ideally, unit tests should follow these rules:
+
+* They should **reflect the goal of the function** -- one should be able to infer what the function does by reading the test...
+* ...but they **can't duplicate the logic of the function** -- if you share function's code with the test, you may be sharing bugs as well.
+* They **must not be changed after refactoring the function** -- this would undermine the point of unit testing.
+* They **shouldn't be redundant** -- a test for one unit of code should be written and executed only once.
+* They should **cover the smallest possible portion of code** (hence the name), usually one function -- you shouldn't confuse unit tests with *integration tests*, which check the cooperation of elements within the program.
+
+It's hard to follow these rules to a T -- sometimes the structure of your application makes it hard to split into easily testable functions, or these functions are so interdependent that they can't be tested separately -- but the more closely you'll follow them, the more you'll get from your tests.
+
+## Test conditions
+
+One of the most important tasks when writing unit test is the proper design of testing conditions. Let's consider a trivial example:
+
+```{r}
+divide = function(x, y) {
+  x / y
+}
+```
+
+Now, you can test this functions for some made-up values of x and y [examples written using testthat package for R]:
+
+```{r, eval = FALSE}
+expect_equal(divide(1, 2), 0.5)
+expect_equal(divide(10, 5), 2)
+# etc...
+```
+
+but it makes little sense. Instead, you should think about some tricky cases:
+
+```{r, eval = FALSE}
+divide(1, 0) # should it return Inf or throw an error?
+divide(1e300, 1e300) # what about large numbers?
+divide(5, "10") # what if one of the arguments is not numeric?
+```
+
+From this simple case you can see that designing test conditions makes you think about the intended behavior of your function and, sometimes, about the goal of writing it. Which leads us to the next point...
+
+## Test-Driven Development
+
+Test-driven development (abbreviated TDD) is a step forward in writing unit tests. Instead of writing tests for the existing code, you write them... before the tested functions are even created.
+
+What's the point of this? How is it even possible?
+
+When you write a unit test for a non-existent function, you have to thoroughly think over its input and desired output (as we saw in the previous section), what the function should actually do and how it would interact with other parts of the program. Obviously the test will initially fail, because there's no function yet, but when you eventually write it, it should behave exactly as intended by the test -- and that's the point of TDD: the program is ready when all tests pass.
+
+I'm not advocating TDD -- I hardly ever use it -- but I strongly recommend following the philosophy of TDD: design your tests so that when a test fails, you refactor the tested function, not the test.
+
+## Unit testing in R
+
+There are several packages for unit testing in R, RUnit and testthat being the most widely used. While the latter seems to be more popular and actively maintained, both are perfectly valid for writing unit tests and the choice of one over the other is up to your preference (or the guidelines for the project).
+
