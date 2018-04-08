@@ -1,0 +1,21 @@
+# Writing reusable code
+
+Because of its "statistical roots", R is mostly used by statisticians and scientists - often lacking any software engineering skills. This means that the most common use case is an interactive console/RStudio session or a single-purpose script running on a fixed data set (and that's why this chapter focuses on R, though some concepts you'll find here are universal).
+
+That's fine. Until you want to run your analysis for different data. Or share your code with your colleagues.
+
+Contrary to the popular belief, R is well suited to writing reusable software, or even (as you can see in other chapters) production-ready code. Its sophisticated package system, coupled with repositories like CRAN or GitHub, makes the development and distribution of programs or function libraries (packages) a breeze.
+
+## R packages
+
+R novices are intimidated by the concept of "packages" (as if it were something uncommon in programming), and creating your first package is considered as an initiation rite. Well, then, the entry threshold is really low...
+
+Although R packages can be (and sometimes are) huge and complex, with hundreds of files in lots of nested subdirectories, the minimal package is actually two files (`DESCRIPTION` and `NAMESPACE`), and a subdirectory named `R/` where all your code goes. That's it. You can create it manually in five minutes, but if you use RStudio, it's not much more than a few clicks (`File -> New project... -> New Directory -> R package`).
+
+The "bible" and basic source of information on writing R packages is Hadley Wickham's book titled (surprisingly) [_R Packages_](http://r-pkgs.had.co.nz/). 
+
+## Good practices
+
+* *Never ever* use absolute paths (e.g., `C:\Documents\jdoe\R\scripts\myscript\data111.csv`) in your code. If you want to bundle data files with your program, put them in the `inst/extdata/` subdirectory of your package and access with `system.file("extdata", "file.csv", package = "mypackage")` (note: `inst` is dropped when your package is built, hence the lack of it in `system.file()` path).
+* It's much better to split your code into separate .R files than to keep it all in one place. Commonly, each file comprises one exported function (a function that is "visible" outside your package and can be executed by its users) and - if needed - auxiliary functions used by the main function, and filename refers to that main function.
+* Instead of hard-coding constants/parameters used by your functions, try to pass them as function arguments. (You can assign them default values that will be used if the user doesn't explicitly choose otherwise.)
