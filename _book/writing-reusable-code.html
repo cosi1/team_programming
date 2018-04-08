@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="introduction.html">
+<link rel="prev" href="version-control-systems-git.html">
+<link rel="next" href="unit-tests.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -134,24 +134,35 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Team Programming for Scientists</h1>
-<h3 class="subtitle"><em>(with examples in R)</em></h3>
-<h4 class="author"><em>Paweł Piątkowski</em></h4>
-<h4 class="date"><em>2018-04-08</em></h4>
+<div id="writing-reusable-code" class="section level1">
+<h1><span class="header-section-number">3</span> Writing reusable code</h1>
+<p>Because of its “statistical roots”, R is mostly used by statisticians and scientists - often lacking any software engineering skills. This means that the most common use case is an interactive console/RStudio session or a single-purpose script running on a fixed data set (and that’s why this chapter focuses on R, though some concepts you’ll find here are universal).</p>
+<p>That’s fine. Until you want to run your analysis for different data. Or share your code with your colleagues.</p>
+<p>Contrary to the popular belief, R is well suited to writing reusable software, or even (as you can see in other chapters) production-ready code. Its sophisticated package system, coupled with repositories like CRAN or GitHub, makes the development and distribution of programs or function libraries (packages) a breeze.</p>
+<div id="r-packages" class="section level2">
+<h2><span class="header-section-number">3.1</span> R packages</h2>
+<p>R novices are intimidated by the concept of “packages” (as if it were something uncommon in programming), and creating your first package is considered as an initiation rite. Well, then, the entry threshold is really low…</p>
+<p>Although R packages can be (and sometimes are) huge and complex, with hundreds of files in lots of nested subdirectories, the minimal package is actually two files (<code>DESCRIPTION</code> and <code>NAMESPACE</code>), and a subdirectory named <code>R/</code> where all your code goes. That’s it. You can create it manually in five minutes, but if you use RStudio, it’s not much more than a few clicks (<code>File -&gt; New project... -&gt; New Directory -&gt; R package</code>).</p>
+<p>The “bible” and basic source of information on writing R packages is Hadley Wickham’s book titled (surprisingly) <a href="http://r-pkgs.had.co.nz/"><em>R Packages</em></a>.</p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" alt="CC-BY-SA" /> This book is licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+<div id="good-practices" class="section level2">
+<h2><span class="header-section-number">3.2</span> Good practices</h2>
+<ul>
+<li><em>Never ever</em> use absolute paths (e.g., <code>C:\Documents\jdoe\R\scripts\myscript\data111.csv</code>) in your code. If you want to bundle data files with your program, put them in the <code>inst/extdata/</code> subdirectory of your package and access with <code>system.file(&quot;extdata&quot;, &quot;file.csv&quot;, package = &quot;mypackage&quot;)</code> (note: <code>inst</code> is dropped when your package is built, hence the lack of it in <code>system.file()</code> path).</li>
+<li>It’s much better to split your code into separate .R files than to keep it all in one place. Commonly, each file comprises one exported function (a function that is “visible” outside your package and can be executed by its users) and - if needed - auxiliary functions used by the main function, and filename refers to that main function.</li>
+<li>Instead of hard-coding constants/parameters used by your functions, try to pass them as function arguments. (You can assign them default values that will be used if the user doesn’t explicitly choose otherwise.)</li>
+</ul>
 
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="version-control-systems-git.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="unit-tests.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

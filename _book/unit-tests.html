@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Team Programming for Scientists</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="A short introduction to software engineering for scientists">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Team Programming for Scientists" />
   <meta property="og:type" content="book" />
@@ -26,15 +25,14 @@
 <meta name="author" content="Paweł Piątkowski">
 
 
-<meta name="date" content="2017-08-13">
+<meta name="date" content="2018-04-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="version-control-systems-git.html">
-
+<link rel="prev" href="writing-reusable-code.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -94,6 +92,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 
 
+
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
     <div class="book-summary">
@@ -108,11 +107,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.3" data-path="version-control-systems-git.html"><a href="version-control-systems-git.html#working-on-branches"><i class="fa fa-check"></i><b>2.3</b> Working on branches</a></li>
 <li class="chapter" data-level="2.4" data-path="version-control-systems-git.html"><a href="version-control-systems-git.html#pull-requests"><i class="fa fa-check"></i><b>2.4</b> Pull requests</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="unit-tests.html"><a href="unit-tests.html"><i class="fa fa-check"></i><b>3</b> Unit tests</a><ul>
-<li class="chapter" data-level="3.1" data-path="unit-tests.html"><a href="unit-tests.html#an-ideal-unit-test"><i class="fa fa-check"></i><b>3.1</b> An ideal unit test</a></li>
-<li class="chapter" data-level="3.2" data-path="unit-tests.html"><a href="unit-tests.html#test-conditions"><i class="fa fa-check"></i><b>3.2</b> Test conditions</a></li>
-<li class="chapter" data-level="3.3" data-path="unit-tests.html"><a href="unit-tests.html#test-driven-development"><i class="fa fa-check"></i><b>3.3</b> Test-Driven Development</a></li>
-<li class="chapter" data-level="3.4" data-path="unit-tests.html"><a href="unit-tests.html#unit-testing-in-r"><i class="fa fa-check"></i><b>3.4</b> Unit testing in R</a></li>
+<li class="chapter" data-level="3" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html"><i class="fa fa-check"></i><b>3</b> Writing reusable code</a><ul>
+<li class="chapter" data-level="3.1" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#r-packages"><i class="fa fa-check"></i><b>3.1</b> R packages</a></li>
+<li class="chapter" data-level="3.2" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#good-practices"><i class="fa fa-check"></i><b>3.2</b> Good practices</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="unit-tests.html"><a href="unit-tests.html"><i class="fa fa-check"></i><b>4</b> Unit tests</a><ul>
+<li class="chapter" data-level="4.1" data-path="unit-tests.html"><a href="unit-tests.html#an-ideal-unit-test"><i class="fa fa-check"></i><b>4.1</b> An ideal unit test</a></li>
+<li class="chapter" data-level="4.2" data-path="unit-tests.html"><a href="unit-tests.html#test-conditions"><i class="fa fa-check"></i><b>4.2</b> Test conditions</a></li>
+<li class="chapter" data-level="4.3" data-path="unit-tests.html"><a href="unit-tests.html#test-driven-development"><i class="fa fa-check"></i><b>4.3</b> Test-Driven Development</a></li>
+<li class="chapter" data-level="4.4" data-path="unit-tests.html"><a href="unit-tests.html#unit-testing-in-r"><i class="fa fa-check"></i><b>4.4</b> Unit testing in R</a></li>
 </ul></li>
 </ul>
 
@@ -132,14 +135,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="unit-tests" class="section level1">
-<h1><span class="header-section-number">3</span> Unit tests</h1>
+<h1><span class="header-section-number">4</span> Unit tests</h1>
 <p>Unit tests are like seat belts: they seem to be only complicating your life – until an accident happens.</p>
 <p>Imagine you’re writing a function that takes an input and returns some result. Unless your function performs trivial calculations, like a single mathematical operation, you need to check somehow if it’s well written. Typically, you would execute your function with several sets of input parameters and verify if the output is correct. Now imagine that you have dozens of functions in your project, some of them very sophisticated, and you decide to optimize the workflow. Or completely change the architecture of your program. What would you do? What comes to mind, is: try to automate it, writing a script that would execute your functions with a predefined set of input parameters each time it’s launched.</p>
 <p>Now add automatic output validation and you get unit tests.</p>
 <p>In a team setting, unit tests are important for one more reason: they can tell your peers or future developers <em>what</em> exactly you expect your function to do. Sometimes documentation is not enough when your function deals with complicated input.</p>
 <p>Unit testing routines are available for most programming languages – usually as separate libraries. Basic procedure almost always looks roughly the same: a single <em>test case</em> consists of the execution of one function and the expected output.</p>
 <div id="an-ideal-unit-test" class="section level2">
-<h2><span class="header-section-number">3.1</span> An ideal unit test</h2>
+<h2><span class="header-section-number">4.1</span> An ideal unit test</h2>
 <p>Ideally, unit tests should follow these rules:</p>
 <ul>
 <li>They should <strong>reflect the goal of the function</strong> – one should be able to infer what the function does by reading the test…</li>
@@ -151,7 +154,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>It’s hard to follow these rules to a T – sometimes the structure of your application makes it hard to split into easily testable functions, or these functions are so interdependent that they can’t be tested separately – but the more closely you’ll follow them, the more you’ll get from your tests.</p>
 </div>
 <div id="test-conditions" class="section level2">
-<h2><span class="header-section-number">3.2</span> Test conditions</h2>
+<h2><span class="header-section-number">4.2</span> Test conditions</h2>
 <p>One of the most important tasks when writing unit test is the proper design of testing conditions. Let’s consider a trivial example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">divide =<span class="st"> </span><span class="cf">function</span>(x, y) {
   x <span class="op">/</span><span class="st"> </span>y
@@ -167,14 +170,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>From this simple case you can see that designing test conditions makes you think about the intended behavior of your function and, sometimes, about the goal of writing it. Which leads us to the next point…</p>
 </div>
 <div id="test-driven-development" class="section level2">
-<h2><span class="header-section-number">3.3</span> Test-Driven Development</h2>
+<h2><span class="header-section-number">4.3</span> Test-Driven Development</h2>
 <p>Test-driven development (abbreviated TDD) is a step forward in writing unit tests. Instead of writing tests for the existing code, you write them… before the tested functions are even created.</p>
 <p>What’s the point of this? How is it even possible?</p>
 <p>When you write a unit test for a non-existent function, you have to thoroughly think over its input and desired output (as we saw in the previous section), what the function should actually do and how it would interact with other parts of the program. Obviously the test will initially fail, because there’s no function yet, but when you eventually write it, it should behave exactly as intended by the test – and that’s the point of TDD: the program is ready when all tests pass.</p>
 <p>I’m not advocating TDD – I hardly ever use it – but I strongly recommend following the philosophy of TDD: design your tests so that when a test fails, you refactor the tested function, not the test.</p>
 </div>
 <div id="unit-testing-in-r" class="section level2">
-<h2><span class="header-section-number">3.4</span> Unit testing in R</h2>
+<h2><span class="header-section-number">4.4</span> Unit testing in R</h2>
 <p>There are several packages for unit testing in R, RUnit and testthat being the most widely used. While the latter seems to be more popular and actively maintained, both are perfectly valid for writing unit tests and the choice of one over the other is up to your preference (or the guidelines for the project).</p>
 
 
@@ -191,9 +194,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="version-control-systems-git.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="writing-reusable-code.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -202,7 +206,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
