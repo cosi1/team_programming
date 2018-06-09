@@ -3,6 +3,7 @@ title: "Team Programming for Scientists"
 subtitle: "(with examples in R)"
 author: "Paweł Piątkowski"
 date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
 description: "A short introduction to software engineering for scientists"

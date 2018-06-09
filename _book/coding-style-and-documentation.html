@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="version-control-systems-git.html">
+<link rel="prev" href="writing-reusable-code.html">
+<link rel="next" href="unit-tests.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,43 +49,6 @@
 
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 </head>
 
@@ -121,6 +84,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.3" data-path="unit-tests.html"><a href="unit-tests.html#test-driven-development"><i class="fa fa-check"></i><b>5.3</b> Test-Driven Development</a></li>
 <li class="chapter" data-level="5.4" data-path="unit-tests.html"><a href="unit-tests.html#unit-testing-in-r"><i class="fa fa-check"></i><b>5.4</b> Unit testing in R</a></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>6</b> Placeholder</a></li>
 </ul>
 
       </nav>
@@ -138,22 +102,33 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction" class="section level1">
-<h1><span class="header-section-number">1</span> Introduction</h1>
-<p>So you’ve joined a team of developers, awaiting your first programming project. Your colleague asked you to “check tickets in Jira”, “clone the repo”, and “review her PR”. In a burst of panic, your mind wanders to the safe, cozy lab you’ve just left. Would it be possible to come back…?</p>
-<p>Transitioning to professional software development may be an overwhelming, daunting experience. This short book is intended for readers (not necessarily scientists!) who have some previous programming experience, but have never worked in a development team, especially in a commercial setting. It covers basic, essential topics that you will most likely encounter during your work as a software developer.</p>
-<p>Although this book is aimed at a wide audience of programmers, regardless of the programming language they use, I decided to ground it in practice, providing examples and case studies in R and command-line Git.</p>
-<p>Why R? While it’s becoming one of the most popular languages in scientific programming, oftentimes it’s not considered a full-fledged language. R programmers (or “users”) usually lack software engineering skills, coding regime and knowledge of good programming practices, which results in poorly-written, low quality code.</p>
-<p>This book is an open source project. All pull requests are welcome (you’ll learn more about pull requests in Chapter 6 ;-)).</p>
+<div id="coding-style-and-documentation" class="section level1">
+<h1><span class="header-section-number">4</span> Coding style and documentation</h1>
+<div id="coding-style" class="section level2">
+<h2><span class="header-section-number">4.1</span> Coding style</h2>
+<p>From my experience, programmers are a weird bunch with a very individualist approach to shaping their code. Unrestrained, they can turn any programming project into a scorched-earth battlefield of formatting styles and coding conventions. To avoid this, an agreement should be made before starting the project (ideally for all future projects) on the following issues:</p>
+<p><strong>Code formatting.</strong> This is one of the most inflammatory topics in programming generally, and among R programmers particularly <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
+<p><strong>Code design.</strong></p>
+<p><strong>Code organization.</strong></p>
+</div>
+<div id="documentation" class="section level2">
+<h2><span class="header-section-number">4.2</span> Documentation</h2>
 
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>To elaborate on the “<code>&lt;-</code> vs <code>=</code>” dispute: there are virtually <em>no</em> differences between the two (ambiguity when using <code>=</code> as an assignment operator can be avoided by enclosing the expression in brackets), and none of them is “superior”. Robert Gentleman – one of the fathers of R – in his book <em>R Programming for Bioinformatics</em> uses <code>=</code> for assignments. You should keep in mind, though, that most R programmers use <code>&lt;-</code> and some package repositories may reject code using <code>=</code>.<a href="coding-style-and-documentation.html#fnref1">↩</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="version-control-systems-git.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="writing-reusable-code.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="unit-tests.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
