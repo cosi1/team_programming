@@ -4,7 +4,9 @@
 
 From my experience, programmers are a weird bunch with a very individualist approach to shaping their code. Unrestrained, they can turn any programming project into a scorched-earth battlefield of formatting styles and coding conventions. To avoid this, an agreement should be made before starting the project (ideally for all future projects) on the following issues:
 
-**Code formatting.** This is one of the most inflammatory topics in programming generally, and among R programmers particularly [^2]. 
+**Code formatting.** This is one of the most inflammatory topics in programming generally, and among R programmers particularly [^2]. First and foremost, there are no better and worse styles, but whichever formatting style has been chosen, it should be used consistently by the team.
+
+For R, the most widespread is the formatting style proposed by Hadley Wickham and described in [The tidyverse style guide](http://style.tidyverse.org/). It's based on [Google's R Style Guide](https://google.github.io/styleguide/Rguide.xml). There are tools available for reformatting ([formatR](https://yihui.name/formatr/), [styler](http://styler.r-lib.org/)) and validating code ([lintr](https://github.com/jimhester/lintr)) according to these rules.
 
 **Code design.** 
 
