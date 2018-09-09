@@ -25,7 +25,7 @@
 <meta name="author" content="Paweł Piątkowski">
 
 
-<meta name="date" content="2018-06-09">
+<meta name="date" content="2018-09-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="coding-style-and-documentation.html">
-
+<link rel="next" href="task-management.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -118,9 +118,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5" data-path="unit-tests.html"><a href="unit-tests.html"><i class="fa fa-check"></i><b>5</b> Unit tests</a><ul>
 <li class="chapter" data-level="5.1" data-path="unit-tests.html"><a href="unit-tests.html#an-ideal-unit-test"><i class="fa fa-check"></i><b>5.1</b> An ideal unit test</a></li>
 <li class="chapter" data-level="5.2" data-path="unit-tests.html"><a href="unit-tests.html#test-conditions"><i class="fa fa-check"></i><b>5.2</b> Test conditions</a></li>
-<li class="chapter" data-level="5.3" data-path="unit-tests.html"><a href="unit-tests.html#test-driven-development"><i class="fa fa-check"></i><b>5.3</b> Test-Driven Development</a></li>
+<li class="chapter" data-level="5.3" data-path="unit-tests.html"><a href="unit-tests.html#test-driven-development"><i class="fa fa-check"></i><b>5.3</b> Test-Driven Development</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="unit-tests.html"><a href="unit-tests.html#hybrid-approach"><i class="fa fa-check"></i><b>5.3.1</b> “Hybrid” approach</a></li>
+</ul></li>
 <li class="chapter" data-level="5.4" data-path="unit-tests.html"><a href="unit-tests.html#unit-testing-in-r"><i class="fa fa-check"></i><b>5.4</b> Unit testing in R</a></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="task-management.html"><a href="task-management.html"><i class="fa fa-check"></i><b>6</b> Task management</a></li>
 </ul>
 
       </nav>
@@ -179,28 +182,33 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>What’s the point of this? How is it even possible?</p>
 <p>When you write a unit test for a non-existent function, you have to thoroughly think over its input and desired output (as we saw in the previous section), what the function should actually do and how it would interact with other parts of the program. Obviously the test will initially fail, because there’s no function yet, but when you eventually write it, it should behave exactly as intended by the test – and that’s the point of TDD: the program is ready when all tests pass.</p>
 <p>I’m not advocating TDD – I hardly ever use it – but I strongly recommend following the philosophy of TDD: design your tests so that when a test fails, you refactor the tested function, not the test.</p>
+<div id="hybrid-approach" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> “Hybrid” approach</h3>
+<p>For some projects, especially from the scientific domain R is often used for, a mixed testing style would be a better choice:</p>
+<ol style="list-style-type: decimal">
+<li>“Mold” the initial version of the function – this is effectively a prototype of the new functionality.</li>
+<li>Write an extensive set of unit tests, covering cases you haven’t thought about when writing your function.
+<ol style="list-style-type: lower-alpha">
+<li>If possible, ask your peers to think of some edge cases – this is a great exercise in team programming, complementing traditional code review.</li>
+</ol></li>
+<li>Adjust your code so that the tests don’t fail.</li>
+<li>If you need to refactor the code, <em>don’t</em> change the tests. Let the new code pass the existing tests, and only then modify them.</li>
+</ol>
+</div>
 </div>
 <div id="unit-testing-in-r" class="section level2">
 <h2><span class="header-section-number">5.4</span> Unit testing in R</h2>
 <p>There are several packages for unit testing in R, RUnit and testthat being the most widely used. While the latter seems to be more popular and actively maintained, both are perfectly valid for writing unit tests and the choice of one over the other is up to your preference (or the guidelines for the project).</p>
 
-
 </div>
 </div>
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="coding-style-and-documentation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="coding-style-and-documentation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="task-management.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

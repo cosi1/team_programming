@@ -60,6 +60,16 @@ When you write a unit test for a non-existent function, you have to thoroughly t
 
 I'm not advocating TDD -- I hardly ever use it -- but I strongly recommend following the philosophy of TDD: design your tests so that when a test fails, you refactor the tested function, not the test.
 
+### "Hybrid" approach
+
+For some projects, especially from the scientific domain R is often used for, a mixed testing style would be a better choice:
+
+1. "Mold" the initial version of the function -- this is effectively a prototype of the new functionality.
+2. Write an extensive set of unit tests, covering cases you haven't thought about when writing your function.
+    a) If possible, ask your peers to think of some edge cases -- this is a great exercise in team programming, complementing traditional code review.
+3. Adjust your code so that the tests don't fail.
+4. If you need to refactor the code, *don't* change the tests. Let the new code pass the existing tests, and only then modify them.
+
 ## Unit testing in R
 
 There are several packages for unit testing in R, RUnit and testthat being the most widely used. While the latter seems to be more popular and actively maintained, both are perfectly valid for writing unit tests and the choice of one over the other is up to your preference (or the guidelines for the project).

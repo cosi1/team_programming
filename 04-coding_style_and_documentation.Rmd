@@ -8,10 +8,12 @@ From my experience, programmers are a weird bunch with a very individualist appr
 
 For R, the most widespread is the formatting style proposed by Hadley Wickham and described in [The tidyverse style guide](http://style.tidyverse.org/). It's based on [Google's R Style Guide](https://google.github.io/styleguide/Rguide.xml). There are tools available for reformatting ([formatR](https://yihui.name/formatr/), [styler](http://styler.r-lib.org/)) and validating code ([lintr](https://github.com/jimhester/lintr)) according to these rules.
 
-**Code design.** 
+**Code design.** TBD
 
-**Code organization.** 
+**Code organization.** TBD
 
 [^2]: To elaborate on the "`<-` vs `=`" dispute: there are virtually *no* differences between the two (ambiguity when using `=` as an assignment operator can be avoided by enclosing the expression in brackets), and none of them is "superior". Robert Gentleman -- one of the fathers of R -- in his book *R Programming for Bioinformatics* uses `=` for assignments. You should keep in mind, though, that most R programmers use `<-` and some package repositories may reject code using `=`.
 
 ## Documentation
+
+TBD
