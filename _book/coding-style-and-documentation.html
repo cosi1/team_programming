@@ -25,7 +25,7 @@
 <meta name="author" content="Paweł Piątkowski">
 
 
-<meta name="date" content="2018-09-09">
+<meta name="date" content="2019-02-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -153,7 +153,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="documentation" class="section level2">
 <h2><span class="header-section-number">4.2</span> Documentation</h2>
-<p>TBD</p>
+<p>There are basically two kinds of documentation in programming projects: one should guide the end user (this might be a programmer if you’re writing a software development tool, and API or a programming library!) through your software, while the other should help the future developers understand your code. Both are equally important (for different reasons), however this chapter will focus on the latter.</p>
+<p><strong>Commenting code.</strong> This is the most appreciated small courtesy you can do for your (present and future) peers, and a form of art on its own. Many a programmer is tempted to describe what the commented code does – which completely missed the point of commenting the code, since it should be assumed that the developer who’s reading it is familiar with the syntax and common constructs of the programming language used (unless it’s Perl<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>). Instead, a good comment should explain <strong>why</strong> the commented code does what it does – so, what the author’s <strong>intention</strong> was.</p>
+<p>Just think about it. This would be nonsense:</p>
+<pre><code>x = x + 1  # add 1 to x</code></pre>
+<p>But this can save your friends lots of head scratching in the future:</p>
+<pre><code>x = x + 1  # switch from 0-indexing to 1-indexing</code></pre>
+<p><strong>Reference documentation.</strong> TBD</p>
 
 </div>
 </div>
@@ -161,6 +167,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <hr />
 <ol start="2">
 <li id="fn2"><p>To elaborate on the “<code>&lt;-</code> vs <code>=</code>” dispute: there are virtually <em>no</em> differences between the two (ambiguity when using <code>=</code> as an assignment operator can be avoided by enclosing the expression in brackets), and none of them is “superior”. Robert Gentleman – one of the fathers of R – in his book <em>R Programming for Bioinformatics</em> uses <code>=</code> for assignments. You should keep in mind, though, that most R programmers use <code>&lt;-</code> and some package repositories may reject code using <code>=</code>.<a href="coding-style-and-documentation.html#fnref2">↩</a></p></li>
+<li id="fn3"><p>Don’t get me wrong, I love Perl. Some of my best friends are Perl programmers!<a href="coding-style-and-documentation.html#fnref3">↩</a></p></li>
 </ol>
 </div>
             </section>

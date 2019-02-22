@@ -16,4 +16,18 @@ For R, the most widespread is the formatting style proposed by Hadley Wickham an
 
 ## Documentation
 
-TBD
+There are basically two kinds of documentation in programming projects: one should guide the end user (this might be a programmer if you're writing a software development tool, and API or a programming library!) through your software, while the other should help the future developers understand your code. Both are equally important (for different reasons), however this chapter will focus on the latter.
+
+**Commenting code.** This is the most appreciated small courtesy you can do for your (present and future) peers, and a form of art on its own. Many a programmer is tempted to describe what the commented code does -- which completely missed the point of commenting the code, since it should be assumed that the developer who's reading it is familiar with the syntax and common constructs of the programming language used (unless it's Perl[^3]). Instead, a good comment should explain **why** the commented code does what it does -- so, what the author's **intention** was.
+
+Just think about it. This would be nonsense:
+
+    x = x + 1  # add 1 to x
+
+But this can save your friends lots of head scratching in the future:
+
+    x = x + 1  # switch from 0-indexing to 1-indexing
+
+**Reference documentation.** TBD
+
+[^3]: Don't get me wrong, I love Perl. Some of my best friends are Perl programmers!
